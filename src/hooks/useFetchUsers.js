@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { fetchUsers } from "../services/userService";
+import { fetchUsers ,} from "../services/userService";
 
 export default function useFetchUsers() {
   const [users, setUsers] = useState([]);
