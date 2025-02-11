@@ -14,13 +14,9 @@ export async function deleteUser(userId) {
 }
 
 export const createUser = async (userData) => {
-  const response = await fetch('https://api.example.com/users', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(userData),
+  const response = await axios.post(API_URL, {
+    ...userData,
+    id: Math.floor(Math.random() * 10000) // Generate temporary ID
   });
-  if (!response.ok) throw new Error('Failed to create user');
-  return response.json();
+  return response.data;
 };
