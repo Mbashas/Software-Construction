@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import useFetchUsers from "../hooks/useFetchUsers";
-import { deleteUser } from "../services/userService";
+import { deleteUser, createUser } from "../services/userService";
 
 function UserList() {
   const { users, loading, error, setUsers } = useFetchUsers();
+  const [newUser, setNewUser] = useState({ name: '', email: '' });
 
   const handleDeleteUser = async (userId) => {
     try {
@@ -14,12 +15,49 @@ function UserList() {
     }
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const createdUser = await createUser(newUser);
+      setUsers([...users, createdUser]);
+      setNewUser({ name: '', email: '' });
+    } catch {
+      alert("Error creating user");
+    }
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setNewUser(prev => ({ ...prev, [name]: value }));
+  };
+
   if (loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
 
   return (
     <div>
       <h2>User List</h2>
+      
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          name="name"
+          value={newUser.name}
+          onChange={handleInputChange}
+          placeholder="Enter name"
+          required
+        />
+        <input
+          type="email"
+          name="email"
+          value={newUser.email}
+          onChange={handleInputChange}
+          placeholder="Enter email"
+          required
+        />
+        <button type="submit">Add User</button>
+      </form>
+
       <ul>
         {users.map(user => (
           <li key={user.id}>
