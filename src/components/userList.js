@@ -18,11 +18,14 @@ function UserList() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      if (!newUser.name || !newUser.email) {
+        throw new Error('Please fill in all fields');
+      }
       const createdUser = await createUser(newUser);
-      setUsers([...users, createdUser]);
+      setUsers(prevUsers => [...prevUsers, createdUser]);
       setNewUser({ name: '', email: '' });
-    } catch {
-      alert("Error creating user");
+    } catch (error) {
+      alert(error.message || "Error creating user");
     }
   };
 
