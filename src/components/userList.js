@@ -1,11 +1,24 @@
+/*
+ * Component-Based Architecture:
+ * This component demonstrates separation of concerns by:
+ * 1. UI rendering
+ * 2. State management
+ * 3. Event handling
+ * Following single responsibility principle
+ */
+
 import React, { useState } from "react";
+// Modular design: Custom hook separates data fetching logic
 import useFetchUsers from "../hooks/useFetchUsers";
+// Dependency injection: Services are imported and used through well-defined interfaces
 import { deleteUser, createUser } from "../services/userService";
 
 function UserList() {
+  // State management encapsulation
   const { users, loading, error, setUsers } = useFetchUsers();
   const [newUser, setNewUser] = useState({ name: '', email: '' });
 
+  // Error handling pattern: Try-catch blocks for robust error management
   const handleDeleteUser = async (userId) => {
     try {
       await deleteUser(userId);
@@ -15,6 +28,7 @@ function UserList() {
     }
   };
 
+  // Form handling with validation and error handling
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -29,14 +43,17 @@ function UserList() {
     }
   };
 
+  // Event handler encapsulation
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setNewUser(prev => ({ ...prev, [name]: value }));
   };
 
+  // Conditional rendering based on state
   if (loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
 
+  // UI Component structure
   return (
     <div>
       <h2>User List</h2>
