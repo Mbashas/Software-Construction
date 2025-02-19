@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "rest_framework", 
     "users",
     "tasks",
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -50,6 +51,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'corsheaders.middleware.CorsMiddleware', 
 ]
 
 ROOT_URLCONF = "backend.urls"
@@ -72,6 +74,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "backend.wsgi.application"
 
+# Allow requests from your React frontend
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3001",
+    "http://127.0.0.1:3001",
+]
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
