@@ -7,13 +7,23 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <nav>
-        <h1>Task Management System</h1>
-      </nav>
-      <main>
-        <UsersPage />
-        <TasksPage />
+      <header className="App-header">
+        <h1>TaskMaster Pro</h1>
+        <p>Tame the chaos, one (and a half!) task at a time. 🚀</p>
+      </header>
+      <main className="App-main">
+        <section className="App-section">
+          <h2>Meet the Crew (aka Users)</h2>
+          <UsersPage />
+        </section>
+        <section className="App-section">
+          <h2>Quest Log (aka Tasks)</h2>
+          <TasksPage />
+        </section>
       </main>
+      <footer className="App-footer">
+        <p>&copy; 2025 TaskMaster Pro - Conquering to-dos since tomorrow. 😉</p>
+      </footer>
     </div>
   );
 }
