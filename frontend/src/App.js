@@ -8,8 +8,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>TaskMaster Pro</h1>
-        <p>Tame the chaos, one (and a half!) task at a time. 🚀</p>
+        <h1>TaskMe Pro</h1>
+        <p>Tame the chaos, one (and a half!) task at a time. Siuuu🚀</p>
       </header>
       <main className="App-main">
         <section className="App-section">
@@ -22,7 +22,7 @@ function App() {
         </section>
       </main>
       <footer className="App-footer">
-        <p>&copy; 2025 TaskMaster Pro - Conquering to-dos since tomorrow. 😉</p>
+        <p>&copy; 2025 TaskMe Pro - Conquering to-dos since tomorrow. 😉</p>
       </footer>
     </div>
   );
