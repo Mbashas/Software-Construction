@@ -1,11 +1,23 @@
+import axios from 'axios';
 
-// src/services/taskService.js
-const API_BASE_URL = 'http://127.0.0.1:8000';
+const API_URL = 'http://127.0.0.1:8000';
 
-export const fetchTasks = async () => {
-    const response = await fetch(`${API_BASE_URL}/tasks/`);
-    if (!response.ok) {
-        throw new Error('Failed to fetch tasks');
-    }
-    return response.json();
+export const getTasks = async () => {
+    const response = await axios.get(`${API_URL}/tasks/`);
+    return response.data;
+};
+
+export const createTask = async (taskData) => {
+    const response = await axios.post(`${API_URL}/tasks/`, taskData);
+    return response.data;
+};
+
+export const updateTask = async (id, taskData) => {
+    const response = await axios.put(`${API_URL}/tasks/${id}/`, taskData);
+    return response.data;
+};
+
+export const deleteTask = async (id) => {
+    await axios.delete(`${API_URL}/tasks/${id}/`);
+    return true;
 };

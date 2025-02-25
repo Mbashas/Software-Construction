@@ -3,7 +3,7 @@ from rest_framework import generics
 from .models import Task
 from .serializers import TaskSerializer
 
-# Provides both GET (list) and POST (create) for tasks
-class TaskListCreateView(generics.ListCreateAPIView):
+# Rename this class to match what's used in urls.py
+class TaskListCreate(generics.ListCreateAPIView):
     queryset = Task.objects.all()
     serializer_class = TaskSerializer

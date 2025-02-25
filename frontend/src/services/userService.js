@@ -1,10 +1,13 @@
-// src/services/userService.js
-const API_BASE_URL = 'http://127.0.0.1:8000';
+import axios from 'axios';
 
-export const fetchUsers = async () => {
-    const response = await fetch(`${API_BASE_URL}/users/`);
-    if (!response.ok) {
-        throw new Error('Failed to fetch users');
-    }
-    return response.json();
+const API_URL = 'http://127.0.0.1:8000';
+
+export const getUsers = async () => {
+    const response = await axios.get(`${API_URL}/users/`);
+    return response.data;
+};
+
+export const createUser = async (userData) => {
+    const response = await axios.post(`${API_URL}/users/`, userData);
+    return response.data;
 };
