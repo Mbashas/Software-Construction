@@ -1,6 +1,9 @@
 .App {
-  text-align: center;
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f7fafc;
 }
 
 .App-logo {
@@ -11,6 +14,90 @@
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.app-header {
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.app-title h1 {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #2d3748;
+}
+
+.welcome {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #718096;
+}
+
+.app-nav {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.nav-btn {
+  background: none;
+  border: none;
+  padding: 0.5rem 1rem;
+  color: #718096;
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+}
+
+.nav-btn:hover {
+  background-color: #f7fafc;
+}
+
+.nav-btn.active {
+  color: #3182ce;
+  background-color: #ebf8ff;
+}
+
+.logout-button {
+  padding: 0.5rem 1rem;
+  background-color: #f56565;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.logout-button:hover {
+  background-color: #e53e3e;
+}
+
+.app-main {
+  flex: 1;
+  padding-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+  .app-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .app-nav {
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
   }
 }
 
@@ -46,19 +133,4 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
-}
-
-.logout-button {
-  padding: 8px 16px;
-  background-color: #d9534f;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 14px;
-  margin-top: 10px;
-}
-
-.logout-button:hover {
-  background-color: #c9302c;
 }
