@@ -1,0 +1,376 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
+
+/* Main login container */
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--mythic-bg, #f5efe6);
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4af37' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative elements */
+.login-papyrus {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  opacity: 0.05;
+  z-index: 0;
+}
+
+/* Visual elements */
+.login-decorations {
+  position: fixed;
+  z-index: 1;
+}
+
+.login-column {
+  position: absolute;
+  width: 80px;
+  height: 400px;
+  background-image: url("data:image/svg+xml,%3Csvg width='80' height='400' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 0C17.9 0 0 17.9 0 40v320c0 22.1 17.9 40 40 40s40-17.9 40-40V40c0-22.1-17.9-40-40-40zm0 10c16.6 0 30 13.4 30 30v320c0 16.6-13.4 30-30 30S10 376.6 10 360V40c0-16.6 13.4-30 30-30z' fill='%23d4af37' fill-opacity='0.2'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+}
+
+.column-left {
+  left: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.column-right {
+  right: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.login-symbol {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.1;
+}
+
+.symbol-eye {
+  top: 10%;
+  left: 15%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 60'%3E%3Cpath d='M50 0C25 0 5 25 0 30c5 5 25 30 50 30s45-25 50-30C95 25 75 0 50 0zm0 50c-11 0-20-9-20-20s9-20 20-20 20 9 20 20-9 20-20 20zm0-30c-5.5 0-10 4.5-10 10s4.5 10 10 10 10-4.5 10-10-4.5-10-10-10z' fill='%23d4af37'/%3E%3C/svg%3E");
+}
+
+.symbol-ankh {
+  bottom: 10%;
+  right: 15%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 120'%3E%3Cpath d='M40 0C29 0 20 9 20 20c0 11 9 20 20 20s20-9 20-20c0-11-9-20-20-20zm0 50c-8.3 0-15-6.7-15-15s6.7-15 15-15 15 6.7 15 15-6.7 15-15 15zm0 0v70M10 60h60' stroke='%23d4af37' stroke-width='10' fill='none'/%3E%3C/svg%3E");
+}
+
+/* Login card */
+.login-card {
+  position: relative;
+  z-index: 2;
+  background: var(--mythic-card-bg, #fffbf6);
+  border-radius: 16px;
+  box-shadow: var(--mythic-card-shadow, 0 8px 20px rgba(44, 51, 50, 0.1));
+  padding: 40px;
+  width: 100%;
+  max-width: 420px;
+  border: 1px solid var(--mythic-card-border, rgba(190, 124, 77, 0.3));
+}
+
+.login-card::before,
+.login-card::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='8' viewBox='0 0 40 8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h5v4H0v4h10V0h5v4h5v4h10V0h5v4h5v4H40V0h-5v4h-5V0H20v4h-5V0H5v4H0V0z' fill='%23d4af37' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E");
+}
+
+.login-card::before {
+  top: 0;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}
+
+.login-card::after {
+  bottom: 0;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+}
+
+/* Logo and title */
+.login-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.login-logo {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+}
+
+.login-logo-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--mythic-gradient-gold, linear-gradient(135deg, #d4af37 0%, #f9df74 100%));
+  border-radius: 16px;
+  transform: rotate(45deg);
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+}
+
+.login-logo-icon {
+  position: relative;
+  z-index: 1;
+  color: var(--mythic-card-bg, #fffbf6);
+}
+
+.login-title {
+  margin: 0 0 6px;
+  font-family: 'Cinzel', serif;
+  font-size: 2.8rem;
+  font-weight: 900;
+  color: var(--mythic-dark, #2c3332);
+  letter-spacing: 1px;
+}
+
+.login-subtitle {
+  margin: 0;
+  font-family: 'Comfortaa', sans-serif;
+  font-size: 1rem;
+  color: var(--mythic-clay, #be7c4d);
+}
+
+/* Form elements */
+.login-form {
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--mythic-dark, #2c3332);
+}
+
+.form-input {
+  width: 100%;
+  padding: 12px 16px;
+  background: rgba(224, 192, 151, 0.1);
+  border: 1px solid rgba(190, 124, 77, 0.2);
+  border-radius: 8px;
+  color: var(--mythic-dark, #2c3332);
+  font-family: 'Comfortaa', sans-serif;
+  font-size: 1rem;
+  transition: all 0.3s;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--mythic-gold, #d4af37);
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
+  background: rgba(224, 192, 151, 0.05);
+}
+
+.form-input::placeholder {
+  color: rgba(44, 51, 50, 0.4);
+}
+
+/* Form buttons */
+.form-actions {
+  margin-top: 32px;
+}
+
+.login-button {
+  width: 100%;
+  padding: 14px;
+  background: var(--mythic-gradient-gold, linear-gradient(135deg, #d4af37 0%, #f9df74 100%));
+  border: none;
+  border-radius: 8px;
+  color: var(--mythic-dark, #2c3332);
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.login-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transition: all 0.5s;
+}
+
+.login-button:hover::before {
+  left: 100%;
+}
+
+.login-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(212, 175, 55, 0.2);
+}
+
+.login-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Error message */
+.login-error {
+  background: rgba(232, 74, 95, 0.1);
+  color: #e84a5f;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+  font-size: 0.9rem;
+  text-align: center;
+  border: 1px solid rgba(232, 74, 95, 0.3);
+}
+
+/* Demo note */
+.login-note {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(190, 124, 77, 0.2);
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--mythic-clay, #be7c4d);
+}
+
+@media (max-width: 480px) {
+  .login-card {
+    padding: 30px 20px;
+  }
+  
+  .login-title {
+    font-size: 2.2rem;
+  }
+  
+  .login-column,
+  .login-symbol {
+    display: none;
+  }
+}
+.mythic-scroll {
+  margin-top: 20px;
+  padding: 15px;
+  background: rgba(190, 124, 77, 0.1);
+  border: 1px solid rgba(190, 124, 77, 0.3);
+  border-radius: 4px;
+  position: relative;
+}
+
+.mythic-scroll::before,
+.mythic-scroll::after {
+  content: "⚡";
+  position: absolute;
+  top: -10px;
+  font-size: 18px;
+}
+
+.mythic-scroll::before {
+  left: 15px;
+}
+
+.mythic-scroll::after {
+  right: 15px;
+}
+
+.scroll-contents h4 {
+  margin: 0 0 8px;
+  color: var(--mythic-clay, #be7c4d);
+  font-size: 16px;
+  text-align: center;
+}
+
+.scroll-contents p {
+  margin: 0;
+  font-style: italic;
+  text-align: center;
+  font-size: 14px;
+}
+.help-tooltip {
+  display: inline-block;
+  position: relative;
+  margin-left: 10px;
+}
+
+.tooltip-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background: rgba(190, 124, 77, 0.2);
+  color: var(--mythic-clay, #be7c4d);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.tooltip-content {
+  position: absolute;
+  bottom: 100%;
+  right: -10px;
+  width: 200px;
+  background: #2a2329;
+  color: #fff;
+  padding: 10px;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  font-size: 14px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 100;
+}
+
+.tooltip-content::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  right: 15px;
+  border-width: 8px;
+  border-style: solid;
+  border-color: #2a2329 transparent transparent transparent;
+}
+
+.help-tooltip:hover .tooltip-content {
+  opacity: 1;
+  visibility: visible;
+  bottom: calc(100% + 10px);
+}

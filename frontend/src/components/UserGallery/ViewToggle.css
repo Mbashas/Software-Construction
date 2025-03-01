@@ -1,0 +1,28 @@
+.kazi-view-toggle {
+  display: flex;
+  background-color: var(--kazi-background);
+  border-radius: var(--kazi-radius-md);
+  padding: 3px;
+  border: 1px solid var(--kazi-border);
+}
+
+.kazi-view-btn {
+  border: none;
+  background: none;
+  padding: 8px 12px;
+  font-size: 1.25rem;
+  color: var(--kazi-text-tertiary);
+  border-radius: var(--kazi-radius-sm);
+  cursor: pointer;
+  transition: all var(--kazi-transition-normal);
+}
+
+.kazi-view-btn.active {
+  background-color: var(--kazi-surface);
+  color: var(--kazi-primary);
+  box-shadow: var(--kazi-shadow-sm);
+}
+
+.kazi-view-icon {
+  display: block;
+}

@@ -1,0 +1,189 @@
+.kazi-user-card {
+  display: grid;
+  grid-template-areas:
+    "avatar info status"
+    "avatar info status"
+    "actions actions actions";
+  grid-template-columns: auto 1fr auto;
+  padding: var(--kazi-spacing-lg);
+  gap: var(--kazi-spacing-md);
+  position: relative;
+  overflow: hidden;
+}
+
+.kazi-user-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--kazi-primary);
+  border-radius: 2px;
+}
+
+.kazi-user-card.list-view {
+  grid-template-areas: "avatar info status actions";
+  grid-template-columns: auto 1fr auto auto;
+  align-items: center;
+}
+
+.kazi-user-avatar {
+  grid-area: avatar;
+  width: 70px;
+  height: 70px;
+  border-radius: var(--kazi-radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: var(--kazi-font-size-xl);
+  font-weight: 600;
+  box-shadow: var(--kazi-shadow);
+}
+
+.kazi-user-card.list-view .kazi-user-avatar {
+  width: 50px;
+  height: 50px;
+  font-size: var(--kazi-font-size-lg);
+}
+
+.kazi-user-info {
+  grid-area: info;
+  display: flex;
+  flex-direction: column;
+}
+
+.kazi-user-name {
+  margin: 0;
+  font-size: var(--kazi-font-size-lg);
+  font-weight: 600;
+  color: var(--kazi-text-primary);
+}
+
+.kazi-user-role {
+  font-size: var(--kazi-font-size-sm);
+  color: var(--kazi-text-secondary);
+  margin-bottom: var(--kazi-spacing-xs);
+}
+
+.kazi-user-email {
+  font-size: var(--kazi-font-size-sm);
+  color: var(--kazi-text-tertiary);
+  margin-bottom: var(--kazi-spacing-md);
+}
+
+.kazi-user-metrics {
+  display: flex;
+  gap: var(--kazi-spacing-lg);
+  margin-top: auto;
+}
+
+.kazi-user-card.list-view .kazi-user-metrics {
+  display: none;
+}
+
+.kazi-metric {
+  display: flex;
+  flex-direction: column;
+}
+
+.kazi-metric-value {
+  font-size: var(--kazi-font-size-md);
+  font-weight: 600;
+  color: var(--kazi-text-primary);
+}
+
+.kazi-metric-label {
+  font-size: var(--kazi-font-size-xs);
+  color: var(--kazi-text-tertiary);
+}
+
+.kazi-user-status {
+  grid-area: status;
+  align-self: start;
+}
+
+.kazi-status-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--kazi-spacing-xs);
+  padding: var(--kazi-spacing-xs) var(--kazi-spacing-sm);
+  border-radius: var(--kazi-radius-full);
+  font-size: var(--kazi-font-size-xs);
+  font-weight: 500;
+}
+
+.kazi-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.kazi-status-indicator.available {
+  background-color: rgba(6, 214, 160, 0.1);
+  color: #059669;
+}
+
+.kazi-status-indicator.available .kazi-status-dot {
+  background-color: #059669;
+}
+
+.kazi-status-indicator.in-a-meeting {
+  background-color: rgba(255, 190, 11, 0.1);
+  color: #d97706;
+}
+
+.kazi-status-indicator.in-a-meeting .kazi-status-dot {
+  background-color: #d97706;
+}
+
+.kazi-status-indicator.away {
+  background-color: rgba(58, 134, 255, 0.1);
+  color: #3b82f6;
+}
+
+.kazi-status-indicator.away .kazi-status-dot {
+  background-color: #3b82f6;
+}
+
+.kazi-status-indicator.do-not-disturb {
+  background-color: rgba(239, 71, 111, 0.1);
+  color: #e11d48;
+}
+
+.kazi-status-indicator.do-not-disturb .kazi-status-dot {
+  background-color: #e11d48;
+}
+
+.kazi-user-actions {
+  grid-area: actions;
+  display: flex;
+  gap: var(--kazi-spacing-md);
+  margin-top: var(--kazi-spacing-md);
+}
+
+.kazi-user-card.list-view .kazi-user-actions {
+  margin-top: 0;
+}
+
+.kazi-user-actions .kazi-button {
+  flex: 1;
+}
+
+.kazi-icon {
+  font-style: normal;
+}
+
+@media (max-width: 768px) {
+  .kazi-user-card.list-view {
+    grid-template-areas:
+      "avatar info status"
+      "actions actions actions";
+    grid-template-columns: auto 1fr auto;
+  }
+  
+  .kazi-user-card.list-view .kazi-user-actions {
+    margin-top: var(--kazi-spacing-md);
+  }
+}

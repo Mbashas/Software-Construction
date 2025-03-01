@@ -1,0 +1,57 @@
+.kazi-search {
+  position: relative;
+  flex: 1;
+  min-width: 250px;
+}
+
+.kazi-search-input {
+  width: 100%;
+  background-color: var(--kazi-surface);
+  border: 1px solid var(--kazi-border);
+  border-radius: var(--kazi-radius-full);
+  padding: var(--kazi-spacing-sm) var(--kazi-spacing-md);
+  padding-left: calc(var(--kazi-spacing-lg) + 1rem);
+  font-family: var(--kazi-font-body);
+  font-size: var(--kazi-font-size-md);
+  color: var(--kazi-text-primary);
+  transition: all var(--kazi-transition-normal);
+}
+
+.kazi-search-input:focus {
+  outline: none;
+  border-color: var(--kazi-primary);
+  box-shadow: 0 0 0 3px rgba(58, 134, 255, 0.2);
+}
+
+.kazi-search-icon {
+  position: absolute;
+  left: var(--kazi-spacing-md);
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--kazi-text-tertiary);
+  pointer-events: none;
+}
+
+.kazi-search-clear {
+  position: absolute;
+  right: var(--kazi-spacing-sm);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--kazi-text-tertiary);
+  color: white;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 10px;
+  transition: all var(--kazi-transition-normal);
+}
+
+.kazi-search-clear:hover {
+  background-color: var(--kazi-accent);
+  transform: translateY(-50%) scale(1.1);
+}

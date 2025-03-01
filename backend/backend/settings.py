@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import os
+from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -38,14 +40,14 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework", 
+    "rest_framework.authtoken",
+    "corsheaders",
     "users",
     "tasks",
-    "rest_framework.authtoken",
-    "corsheaders",  # Add this line
 ]
 
 MIDDLEWARE = [
-    "corsheaders.middleware.CorsMiddleware",  # Add this line at the top
+    "corsheaders.middleware.CorsMiddleware",  # Keep this at the top
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -128,23 +130,47 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-# Add these REST framework settings
+# Enhanced REST framework settings
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny',  # This allows access without authentication
     ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+    ],
 }
 
-# Add CORS settings
+# Enhanced CORS settings - critical for React frontend
 CORS_ALLOW_ALL_ORIGINS = True  # For development only
-# For production, use:
-# CORS_ALLOWED_ORIGINS = [
-#     "http://localhost:3000",
-#     "https://yourdomain.com",
-# ]
-
-# Allow credentials (cookies, authorization headers)
 CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_METHODS = [
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+]
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+]
 
 # Add this line to specify the custom user model
 AUTH_USER_MODEL = 'users.CustomUser'
+
+# Add the following settings for Django CSRF protection
+CSRF_COOKIE_SAMESITE = 'Lax'  # Use 'Strict' in production
+CSRF_COOKIE_HTTPONLY = False  # False allows JavaScript to access the cookie
+CSRF_TRUSTED_ORIGINS = ['http://localhost:3000']  # Add your frontend origins
+SESSION_COOKIE_SAMESITE = 'Lax'  # Use 'Strict' in production
+SESSION_COOKIE_HTTPONLY = True

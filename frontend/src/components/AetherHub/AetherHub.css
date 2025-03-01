@@ -1,0 +1,295 @@
+.aether-container {
+  position: relative;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+  overflow: hidden;
+}
+
+.aether-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.aether-title {
+  font-family: var(--aether-font-heading);
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.025em;
+}
+
+.aether-subtitle {
+  color: var(--aether-text-secondary);
+  font-size: 1.125rem;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.aether-badge {
+  background: var(--aether-gradient-cool);
+  color: var(--aether-text-inverted);
+  padding: 0.125rem 0.5rem;
+  border-radius: var(--aether-radius-full);
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.aether-gradient-text {
+  background: var(--aether-gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  position: relative;
+}
+
+.aether-gradient-text::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  background: var(--aether-gradient-secondary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.aether-gradient-text:hover::after {
+  opacity: 1;
+}
+
+.aether-control-panel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  border-radius: var(--aether-radius-lg);
+  gap: 1rem;
+  position: relative;
+  z-index: 2;
+  flex-wrap: wrap;
+}
+
+.aether-panel-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.aether-sort {
+  position: relative;
+}
+
+.aether-select {
+  appearance: none;
+  background-color: var(--aether-surface-0);
+  border: 1px solid var(--aether-surface-200);
+  border-radius: var(--aether-radius-md);
+  padding: 0.625rem 2.5rem 0.625rem 1rem;
+  font-family: var(--aether-font-body);
+  font-size: 0.875rem;
+  color: var(--aether-text-secondary);
+  cursor: pointer;
+  transition: all var(--aether-transition-fast);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24' fill='none' stroke='%2352525b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1rem;
+}
+
+.aether-select:focus {
+  outline: none;
+  border-color: var(--aether-primary);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+}
+
+.aether-network-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.aether-status {
+  font-size: 0.875rem;
+  color: var(--aether-text-secondary);
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--aether-radius-md);
+  background-color: var(--aether-surface-50);
+  border: 1px solid var(--aether-surface-200);
+  transition: all var(--aether-transition-fast);
+}
+
+.aether-status.active {
+  background-color: rgba(79, 70, 229, 0.1);
+  border-color: var(--aether-primary);
+  color: var(--aether-primary);
+}
+
+.aether-members-grid {
+  display: grid;
+  gap: 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.aether-members-grid.grid {
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+.aether-members-grid.list {
+  grid-template-columns: 1fr;
+}
+
+/* Loading styles */
+.aether-loading-container {
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.aether-cosmic-loader {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin-bottom: 1.5rem;
+}
+
+.aether-orbit {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 2px solid rgba(79, 70, 229, 0.2);
+  border-radius: 50%;
+}
+
+.aether-orbit::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  margin-left: -8px;
+  background: var(--aether-primary);
+  border-radius: 50%;
+  animation: aetherSpin 1.5s linear infinite;
+}
+
+.aether-core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 24px;
+  height: 24px;
+  margin-top: -12px;
+  margin-left: -12px;
+  background: var(--aether-gradient-primary);
+  border-radius: 50%;
+  animation: aetherPulse 1.5s infinite;
+}
+
+.aether-loading-text {
+  color: var(--aether-text-secondary);
+  font-size: 1.125rem;
+  text-align: center;
+}
+
+/* Error styles */
+.aether-error {
+  padding: 3rem;
+  text-align: center;
+  background-color: var(--aether-surface-0);
+  border-radius: var(--aether-radius-lg);
+  box-shadow: var(--aether-shadow-md);
+}
+
+.aether-error-symbol {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--aether-accent-4);
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+}
+
+.aether-error h3 {
+  font-family: var(--aether-font-heading);
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--aether-text-primary);
+}
+
+.aether-error p {
+  color: var(--aether-text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+/* Empty state */
+.aether-empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 3rem;
+  background-color: var(--aether-surface-0);
+  border-radius: var(--aether-radius-lg);
+  box-shadow: var(--aether-shadow-md);
+}
+
+.aether-empty-symbol {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: var(--aether-accent-3);
+}
+
+.aether-empty-state h3 {
+  font-family: var(--aether-font-heading);
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--aether-text-primary);
+}
+
+.aether-empty-state p {
+  color: var(--aether-text-secondary);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .aether-control-panel {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .aether-panel-actions {
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .aether-title {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .aether-container {
+    padding: 1rem;
+  }
+}
