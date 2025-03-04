@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Login } from './components/Login/Login';
-import { TaskList } from './components/TaskList/TaskList';
+import TaskDashboard from './components/Tasks/TaskDashboard';
 import { UserGallery } from './components/UserGallery/UserGallery';
 import { isAuthenticated, logout, setAuthToken } from './services/authService';
 import './App.css';
@@ -96,7 +96,7 @@ function App() {
           
           <main className="app-content">
             {activeView === 'users' && <UserGallery />}
-            {activeView === 'tasks' && <TaskList />}
+            {activeView === 'tasks' && <TaskDashboard />}
           </main>
         </>
       )}

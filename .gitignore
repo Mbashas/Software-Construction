@@ -20,6 +20,10 @@ Notes/
 .env.test.local
 .env.production.local
 
+# Project documentation
+PROJECT_REPORT.md
+README.md
+
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*

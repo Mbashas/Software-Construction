@@ -1,70 +1,186 @@
-# Getting Started with Create React App
+# Prism Nexus / Agora Hub
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A full-stack task management application built with Django REST Framework and React.
 
-## Available Scripts
+![Agora Hub](/screenshots/agora-hub-dashboard.png)
 
-In the project directory, you can run:
+## Overview
 
-### `npm start`
+Prism Nexus (backend code name) / Agora Hub (frontend theme name) is a modern task management system that allows users to:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Create, view, update, and delete tasks
+- Assign tasks to users
+- Filter and sort tasks by various criteria
+- Track task status and progress
+- Manage users and permissions
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The project features a Django backend with a REST API and a React frontend with a clean, modern UI.
 
-### `npm test`
+## Tech Stack
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Backend
+- Django 5.1.6
+- Django REST Framework
+- SQLite database
+- Token-based authentication
 
-### `npm run build`
+### Frontend
+- React
+- Modern JavaScript (ES6+)
+- Custom CSS
+- React Context API
+- React Router
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Getting Started
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Prerequisites
+- Python 3.8+
+- Node.js 14+
+- npm or yarn
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Backend Setup
+1. Navigate to the backend directory:
+   ```bash
+   cd backend
+   ```
 
-### `npm run eject`
+2. Create and activate a virtual environment:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+3. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4. Apply migrations:
+   ```bash
+   python manage.py migrate
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+5. Create a superuser:
+   ```bash
+   python manage.py createsuperuser
+   ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+6. Start the development server:
+   ```bash
+   python manage.py runserver
+   ```
 
-## Learn More
+### Frontend Setup
+1. Navigate to the frontend directory:
+   ```bash
+   cd frontend
+   ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+3. Start the development server:
+   ```bash
+   npm start
+   ```
 
-### Code Splitting
+4. The application will be available at http://localhost:3000
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Features
 
-### Analyzing the Bundle Size
+### User Authentication
+- Token-based authentication
+- User registration and login
+- Protected routes and API endpoints
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Task Management
+- Create new tasks with title, description, priority and due date
+- Assign tasks to users
+- Mark tasks as complete
+- Edit and delete tasks
+- Filter tasks by status, priority, and search term
+- Sort tasks by various fields
 
-### Making a Progressive Web App
+### User Interface
+- Clean, modern design with an ancient Greek/Egyptian theme
+- Responsive layout for various device sizes
+- Intuitive navigation and interactions
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Project Structure
 
-### Advanced Configuration
+### Backend
+```
+backend/
+├── backend/             # Django project settings
+├── tasks/               # Tasks app
+│   ├── migrations/
+│   ├── models.py        # Task data models
+│   ├── serializers.py   # REST serializers
+│   ├── views.py         # API views
+│   └── urls.py          # App URLs
+├── users/               # Users app
+│   ├── migrations/
+│   ├── models.py        # Custom user model
+│   ├── serializers.py   # User serializers
+│   ├── views.py         # User API views
+│   └── urls.py          # User URLs
+└── manage.py            # Django management script
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Frontend
+```
+frontend/
+├── public/              # Public assets
+├── src/
+│   ├── components/      # React components
+│   │   ├── Login/       # Authentication components
+│   │   ├── TaskList/    # Task list components
+│   │   ├── Tasks/       # Task-related components
+│   │   └── UserGallery/ # User display components
+│   ├── context/         # React context providers
+│   ├── services/        # API service modules
+│   ├── utils/           # Utility functions and scripts
+│   ├── App.js           # Main application component
+│   └── index.js         # Application entry point
+└── package.json         # Node dependencies
+```
 
-### Deployment
+## API Endpoints
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+| Endpoint          | Method | Description                      | Authentication |
+|-------------------|--------|----------------------------------|----------------|
+| /users/login/     | POST   | Authenticates a user             | No             |
+| /users/register/  | POST   | Registers a new user             | No             |
+| /users/me/        | GET    | Gets current user details        | Yes            |
+| /users/           | GET    | Lists all users                  | Yes            |
+| /tasks/           | GET    | Lists tasks for current user     | Yes            |
+| /tasks/           | POST   | Creates a new task               | Yes            |
+| /tasks/{id}/      | GET    | Gets details for a specific task | Yes            |
+| /tasks/{id}/      | PATCH  | Updates a specific task          | Yes            |
+| /tasks/{id}/      | DELETE | Deletes a specific task          | Yes            |
 
-### `npm run build` fails to minify
+## Troubleshooting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Migration Issues
+If you encounter Django migration issues, use the provided utility scripts:
+```bash
+python fix_migrations.bat  # On Windows
+./fix_migrations.sh        # On Unix-based systems
+```
+
+### Database Schema Issues
+To inspect and fix database schema issues:
+```bash
+python inspect_db.py
+python fix_task_model.py
+```
+
+## License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgments
+- Django REST Framework documentation and community
+- React documentation and community
+- All contributors to this project

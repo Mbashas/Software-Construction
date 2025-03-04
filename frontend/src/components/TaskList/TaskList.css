@@ -1,3 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Marcellus&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Marcellus:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&display=swap');
+
 .prism-task-container {
   padding: 2rem 1rem;
   max-width: 1200px;
@@ -130,4 +135,378 @@
   text-align: center;
   margin: 2rem auto;
   max-width: 800px;
+}
+
+/* Ancient theme container styling */
+.ancient-task-container {
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  font-family: 'Marcellus', serif;
+  color: #f2e8cb; /* Lighter color for better visibility */
+  font-weight: 500; /* Slightly bolder base font */
+}
+
+/* Decorative border with ancient patterns */
+.ancient-task-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 12px;
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='12' viewBox='0 0 100 12' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 6 L10 0 L20 6 L30 0 L40 6 L50 0 L60 6 L70 0 L80 6 L90 0 L100 6 L100 0 L0 0 Z' fill='%23d4af37' fill-opacity='0.5'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+}
+
+.ancient-task-container::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 12px;
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='12' viewBox='0 0 100 12' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 6 L10 12 L20 6 L30 12 L40 6 L50 12 L60 6 L70 12 L80 6 L90 12 L100 6 L100 12 L0 12 Z' fill='%23d4af37' fill-opacity='0.5'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+}
+
+/* Header with golden title */
+.ancient-task-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.ancient-task-title {
+  font-family: 'Cinzel', serif;
+  font-size: 3rem;
+  font-weight: 700; /* Make the title bolder */
+  margin: 0 0 0.5rem;
+  color: #f0d060; /* Brighter gold for better visibility */
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.5); /* Enhanced shadow for more contrast */
+}
+
+/* Egyptian hieroglyph symbols */
+.ancient-symbols-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2rem;
+  font-size: 2rem;
+  color: rgba(212, 175, 55, 0.6);
+  pointer-events: none;
+}
+
+.ancient-symbol {
+  transform: scale(1.2);
+  opacity: 0.8;
+}
+
+.ancient-symbol-left {
+  margin-right: auto;
+}
+
+.ancient-symbol-right {
+  margin-left: auto;
+}
+
+/* Ancient-styled subtitle */
+.ancient-task-subtitle {
+  color: #d5c089; /* Lighter color for better visibility */
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 500;
+  font-style: italic;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+/* Papyrus-like task list container */
+.ancient-task-list {
+  background: rgba(51, 41, 24, 0.7);
+  border-radius: 4px;
+  padding: 2rem;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+/* Ancient-styled header */
+.ancient-task-list h2 {
+  font-family: 'Cinzel', serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin: 0 0 1.5rem;
+  color: #f0d060; /* Brighter gold */
+  text-align: center;
+  position: relative;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.4);
+}
+
+/* Decorative divider */
+.ancient-divider {
+  display: flex;
+  align-items: center;
+  margin: 2rem 0;
+  color: rgba(212, 175, 55, 0.6);
+}
+
+.ancient-divider::before,
+.ancient-divider::after {
+  content: "";
+  flex-grow: 1;
+  height: 1px;
+  background: rgba(212, 175, 55, 0.3);
+  margin: 0 10px;
+}
+
+/* Tablet/papyrus-like task cards */
+.ancient-task-card {
+  background: rgba(60, 46, 25, 0.7); /* Darker background for better text contrast */
+  border-radius: 4px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(212, 175, 55, 0.4); /* More visible border */
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* More pronounced shadow */
+}
+
+.ancient-task-card::before {
+  content: "𓏺";
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  color: rgba(212, 175, 55, 0.2);
+  font-size: 1.8rem;
+}
+
+.ancient-task-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  border-color: rgba(212, 175, 55, 0.5);
+}
+
+/* Task title styling */
+.ancient-task-card h3 {
+  margin: 0 0 0.75rem;
+  color: #f0d060; /* Brighter gold for better visibility */
+  font-family: 'Cinzel', serif;
+  font-size: 1.4rem;
+  font-weight: 700; /* Bolder weight */
+  border-bottom: 1px solid rgba(212, 175, 55, 0.5);
+  padding-bottom: 0.5rem;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+/* Task description */
+.ancient-task-card p {
+  margin: 0 0 1rem;
+  color: #f2e8cb; /* Lighter color for better visibility */
+  font-family: 'Marcellus', serif;
+  font-size: 1.05rem; /* Slightly larger */
+  line-height: 1.6;
+  font-weight: 500; /* Slightly bolder */
+}
+
+/* Task metadata styling */
+.ancient-task-meta {
+  display: flex;
+  justify-content: space-between;
+  color: #d5c089; /* Lighter color */
+  font-size: 0.9rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(212, 175, 55, 0.4);
+  font-family: 'Marcellus', serif;
+  font-weight: 500; /* Slightly bolder */
+}
+
+/* Status indicators */
+.ancient-status {
+  display: flex;
+  align-items: center;
+}
+
+.ancient-status-pending::before {
+  content: "𓏤";
+  margin-right: 5px;
+  color: #f0d060; /* Brighter gold */
+  font-size: 1.1rem; /* Slightly larger */
+}
+
+.ancient-status-completed::before {
+  content: "𓏥";
+  margin-right: 5px;
+  color: #f0d060; /* Brighter gold */
+  font-size: 1.1rem; /* Slightly larger */
+}
+
+/* Date styling */
+.ancient-date {
+  display: flex;
+  align-items: center;
+}
+
+.ancient-date::before {
+  content: "𓇳";
+  margin-right: 5px;
+  color: #f0d060; /* Brighter gold */
+  font-size: 1.1rem; /* Slightly larger */
+}
+
+/* Empty state styling */
+.ancient-empty-state {
+  text-align: center;
+  padding: 3rem;
+  color: #a08c5a;
+  position: relative;
+}
+
+.ancient-empty-symbol {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  display: block;
+  color: rgba(212, 175, 55, 0.4);
+}
+
+.ancient-empty-state h3 {
+  font-family: 'Cinzel', serif;
+  color: #d4af37;
+  margin: 0 0 1rem;
+}
+
+.ancient-empty-state p {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* Task placeholder with symbols */
+.ancient-task-placeholder {
+  background: rgba(51, 41, 24, 0.5);
+  border-radius: 4px;
+  padding: 3rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  min-height: 300px;
+  position: relative;
+  overflow: hidden;
+}
+
+.ancient-placeholder-icon {
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.5) 0%, rgba(212, 175, 55, 0.2) 70%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  color: #d4af37;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.ancient-placeholder-icon::before {
+  content: "𓁓";
+  position: absolute;
+}
+
+.ancient-task-placeholder h2 {
+  margin: 0 0 1rem;
+  color: #f0d060; /* Brighter gold */
+  font-family: 'Cinzel', serif;
+  font-weight: 700; /* Bolder weight */
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+.ancient-task-placeholder p {
+  margin: 0;
+  color: #d5c089; /* Lighter color for better visibility */
+  max-width: 400px;
+  font-weight: 500; /* Slightly bolder */
+  font-size: 1.05rem; /* Slightly larger */
+}
+
+/* Error state styling */
+.ancient-error {
+  background: rgba(172, 50, 50, 0.25); /* More visible background */
+  color: #ffb8b8; /* Lighter color for better visibility */
+  padding: 1.5rem;
+  border-radius: 4px;
+  text-align: center;
+  margin: 2rem auto;
+  max-width: 800px;
+  border: 1px solid rgba(255, 120, 120, 0.5);
+  font-weight: 500; /* Slightly bolder */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* More pronounced shadow */
+}
+
+.ancient-error::before {
+  content: "⚠";
+  display: block;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: #e59a9a;
+}
+
+/* Animation effects */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.ancient-task-card {
+  animation: fadeIn 0.5s ease-out forwards;
+  opacity: 0;
+  animation-delay: calc(var(--index, 0) * 0.1s);
+}
+
+/* Loading animation */
+.ancient-loader {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.ancient-loader::after {
+  content: "𓏛 𓏜 𓏝";
+  animation: pulse 1.5s infinite;
+  font-size: 2rem;
+  color: #d4af37;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.3; }
+  50% { opacity: 1; }
+  100% { opacity: 0.3; }
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .ancient-task-title {
+    font-size: 2rem;
+  }
+  
+  .ancient-symbols-container {
+    padding: 0 1rem;
+    font-size: 1.5rem;
+  }
+  
+  .ancient-task-list {
+    padding: 1.5rem;
+  }
+  
+  .ancient-task-card {
+    padding: 1rem;
+  }
 }
