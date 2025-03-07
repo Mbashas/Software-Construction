@@ -1,6 +1,9 @@
 Agora Hub
+Agora takes inspiration from the ancient Greek concept of a central public gathering space. In ancient Greek city-states, the agora (ἀγορά) served as the heart of civic life—a marketplace where goods were exchanged, ideas were debated, and communities came together.
+Agora API platform reimagines this concept for the digital age:
+Just as the ancient agora facilitated exchanges between citizens, our API system creates structured interactions between software applications. The User and Task Management APIs serve as digital meeting points where data can be reliably created, accessed, modified, and removed.
 
-A full-stack task management application built with Django REST Framework and React.
+Agora Hub is a full-stack task management application built with Django REST Framework and React.
 
 ![Agora Hub](/screenshots/agora-hub-dashboard.png)
 
