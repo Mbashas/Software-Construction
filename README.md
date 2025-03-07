@@ -1,4 +1,4 @@
-# Prism Nexus / Agora Hub
+Agora Hub
 
 A full-stack task management application built with Django REST Framework and React.
 
@@ -6,7 +6,7 @@ A full-stack task management application built with Django REST Framework and Re
 
 ## Overview
 
-Prism Nexus (backend code name) / Agora Hub (frontend theme name) is a modern task management system that allows users to:
+Agora Hub is a modern task management system that allows users to:
 
 - Create, view, update, and delete tasks
 - Assign tasks to users
@@ -34,9 +34,9 @@ The project features a Django backend with a REST API and a React frontend with 
 ## Getting Started
 
 ### Prerequisites
-- Python 3.8+
-- Node.js 14+
-- npm or yarn
+- Python 
+- Node.js 
+- npm
 
 ### Backend Setup
 1. Navigate to the backend directory:
