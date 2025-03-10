@@ -6,6 +6,7 @@ Just as the ancient agora facilitated exchanges between citizens, our API system
 Agora Hub is a full-stack task management application built with Django REST Framework and React.
 
 ![Agora Hub](/screenshots/agora-hub-dashboard.png)
+![Agora Hub](/screenshots/agora-hub-taskboard.png)
 
 ## Overview
 
