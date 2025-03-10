@@ -15,6 +15,7 @@ const NewTaskForm = () => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [newTask, setNewTask] = useState(initialTaskState);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState('');
   const { addTask, users } = useTasks();
   
   const handleChange = (e) => {
@@ -25,14 +26,65 @@ const NewTaskForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setError('');
     
     try {
-      await addTask(newTask);
+      // Validate required fields first
+      if (!newTask.title.trim()) {
+        throw new Error('Task title is required');
+      }
+      
+      // Format the task data to match what the backend expects
+      const formattedTask = {
+        title: newTask.title.trim(),
+        description: newTask.description.trim(),
+        priority: newTask.priority,
+        status: false, // Default to false for new tasks
+        // Convert assigned_to to number or null
+        assigned_to: newTask.assigned_to ? parseInt(newTask.assigned_to, 10) : null
+      };
+      
+      // Only add due_date if it's actually provided
+      if (newTask.due_date) {
+        formattedTask.due_date = newTask.due_date;
+      }
+      
+      console.log('Preparing to send task:', formattedTask);
+      
+      // Send the task to be created
+      await addTask(formattedTask);
       setNewTask(initialTaskState);
       setIsExpanded(false);
     } catch (error) {
-      console.error('Failed to add task:', error);
-      // Could add error feedback here
+      console.error('Error creating task:', error);
+      
+      // Display user-friendly error messages
+      if (typeof error === 'object' && error !== null) {
+        // Extract error messages from response data
+        if (error.detail) {
+          setError(error.detail);
+        } else if (error.message) {
+          setError(error.message);
+        } else if (error.non_field_errors) {
+          setError(error.non_field_errors.join(', '));
+        } else {
+          // Check for field-specific errors
+          const fieldErrors = [];
+          for (const key in error) {
+            if (Array.isArray(error[key])) {
+              fieldErrors.push(`${key}: ${error[key].join(' ')}`);
+            }
+          }
+          
+          if (fieldErrors.length > 0) {
+            setError(fieldErrors.join('\n'));
+          } else {
+            setError('Failed to create task. Please check your input.');
+          }
+        }
+      } else {
+        setError('Failed to create task. Please check your input.');
+      }
     } finally {
       setIsSubmitting(false);
     }
@@ -51,9 +103,15 @@ const NewTaskForm = () => {
       ) : (
         <div className="new-task-form-wrapper">
           <h3 className="form-title">
-            <span className="form-icon">𓏭</span> {/* Egyptian papyrus roll symbol */}
+            <span className="form-icon">𓏭</span>
             Create New Scroll
           </h3>
+          
+          {error && (
+            <div className="error-message">
+              {error}
+            </div>
+          )}
           
           <form onSubmit={handleSubmit} className="papyrus-form">
             <div className="form-field">
@@ -123,7 +181,7 @@ const NewTaskForm = () => {
               >
                 <option value="">Select a scribe...</option>
                 {users && users.map(user => (
-                  <option key={user.id} value={user.username}>
+                  <option key={user.id} value={user.id}>
                     {user.username}
                   </option>
                 ))}

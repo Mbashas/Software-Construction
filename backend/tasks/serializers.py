@@ -1,43 +1,29 @@
 from rest_framework import serializers
-from .models import Task
 from django.contrib.auth import get_user_model
+from .models import Task
 
 User = get_user_model()
 
 class TaskSerializer(serializers.ModelSerializer):
-    assigned_to = serializers.CharField(source='assigned_to.username', allow_null=True, required=False)
+    created_by_username = serializers.ReadOnlyField(source='created_by.username')
+    assigned_to_username = serializers.SerializerMethodField()
     
     class Meta:
         model = Task
-        fields = ['id', 'title', 'description', 'status', 'priority', 
-                 'created_at', 'due_date', 'assigned_to']
+        fields = [
+            'id', 'title', 'description', 'status', 'priority',
+            'created_at', 'due_date', 'completed_at',
+            'created_by', 'created_by_username',
+            'assigned_to', 'assigned_to_username'
+        ]
+        read_only_fields = ['created_at', 'completed_at', 'created_by', 'created_by_username']
     
-    def create(self, validated_data):
-        # Handle assigned_to as username string
-        assigned_to_data = validated_data.pop('assigned_to', None)
-        if assigned_to_data and assigned_to_data.get('username'):
-            try:
-                assigned_to_user = User.objects.get(username=assigned_to_data['username'])
-                validated_data['assigned_to'] = assigned_to_user
-            except User.DoesNotExist:
-                raise serializers.ValidationError({'assigned_to': 'User does not exist'})
-        
-        # Set created_by to the current user
-        validated_data['created_by'] = self.context['request'].user
-        
-        return super().create(validated_data)
+    def get_assigned_to_username(self, obj):
+        if obj.assigned_to:
+            return obj.assigned_to.username
+        return None
     
-    def update(self, instance, validated_data):
-        # Handle assigned_to as username string
-        assigned_to_data = validated_data.pop('assigned_to', None)
-        if assigned_to_data and assigned_to_data.get('username'):
-            try:
-                assigned_to_user = User.objects.get(username=assigned_to_data['username'])
-                validated_data['assigned_to'] = assigned_to_user
-            except User.DoesNotExist:
-                raise serializers.ValidationError({'assigned_to': 'User does not exist'})
-        elif assigned_to_data is not None and assigned_to_data.get('username') == '':
-            # If empty string is provided, set to None
-            validated_data['assigned_to'] = None
-        
-        return super().update(instance, validated_data)
+    def validate_assigned_to(self, value):
+        if value and not User.objects.filter(id=value.id).exists():
+            raise serializers.ValidationError(f"User with ID {value.id} does not exist")
+        return value

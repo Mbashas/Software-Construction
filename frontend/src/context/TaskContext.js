@@ -243,18 +243,49 @@ export function TaskProvider({ children }) {
   async function addTask(task) {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.post(`${API_URL}/tasks/`, task, {
+      
+      // Format the data to match backend expectations
+      const formattedTask = {
+        ...task,
+        status: task.status === true || task.status === 'true', // Ensure boolean
+        due_date: task.due_date || null // Ensure null if empty string
+      };
+      
+      // Log the exact data being sent
+      console.log('Task data being sent to API:', JSON.stringify(formattedTask, null, 2));
+      
+      // Ensure required fields are present
+      if (!formattedTask.title) {
+        throw new Error('Task title is required');
+      }
+      
+      const response = await axios.post(`${API_URL}/tasks/`, formattedTask, {
         headers: { 
           'Authorization': `Token ${token}`,
           'Content-Type': 'application/json'
         }
       });
       
+      console.log('API response:', response.data);
       dispatch({ type: actions.ADD_TASK, payload: response.data });
       return response.data;
     } catch (error) {
       console.error('Failed to add task:', error);
-      throw new Error('Failed to add task. Please try again.');
+      
+      // Enhanced error logging
+      if (error.response) {
+        console.error('Server response error:', {
+          status: error.response.status,
+          data: error.response.data,
+          headers: error.response.headers
+        });
+        throw error.response.data || error;
+      } else if (error.request) {
+        console.error('No response received:', error.request);
+        throw new Error('No response from server. Please check your connection.');
+      } else {
+        throw error;
+      }
     }
   }
   
